@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/* Design tokens: change these few values to re-brand the site for a client. */
+@theme {
+  --color-paper: #f5f1ea;
+  --color-paper-deep: #ebe4d8;
+  --color-ink: #1d1b18;
+  --color-muted: #6a6258;
+  --color-line: #d8cfc1;
+  --color-accent: #9a4f2c;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* keeps section titles clear of the sticky header */
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+/* Fade-up on scroll with zero JavaScript. Browsers without scroll-driven
+   animations simply show the content, so nothing breaks. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+dialog::backdrop {
+  background: rgb(20 18 15 / 0.92);
+}
