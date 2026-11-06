@@ -57,6 +57,187 @@ body {
   }
 }
 
+/* ---------- Polaroid tornado ----------
+   Each print rides up a spiral, from the narrow bottom to the wide top, then
+   gets sucked back in at the bottom and goes again: a loop that never ends.
+   The nesting matters: stage (camera) > sway (wobble) > prints. Every level
+   keeps preserve-3d so the prints stay in real 3D space. */
+
+/* @property registers --t and --s as numbers. Without this, the browser can't
+   animate a custom property smoothly. It would jump straight from 0 to 1. */
+@property --t {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+@property --s {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+.tornado-stage {
+  --r-min: 150px; /* funnel radius at the bottom: wide enough that prints don't pile up */
+  --r-max: 300px; /* and at the top */
+  --card: 128px;
+  --h: 640px;
+  --turns: 810deg; /* 2.25 turns from bottom to top */
+  --ride: 36s; /* how long one print takes to ride from bottom to top */
+  position: relative;
+  height: var(--h);
+  perspective: 1400px;
+  perspective-origin: 50% 30%;
+}
+
+.tornado-sway {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform; /* hint: give this its own GPU layer */
+  animation: tornado-sway 7s ease-in-out infinite alternate;
+}
+
+/* Paused while scrolled out of view (set by PolaroidTornado), so it costs nothing then. */
+.tornado-stage[data-paused] * {
+  animation-play-state: paused !important;
+}
+
+/* --t is where a print is on its ride: 0 = bottom, 1 = top. Height, angle and
+   radius all follow from it, so one number moves the print along the spiral.
+   --s is its size, so it can shrink away at the top and grow in at the bottom. */
+.polaroid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--card);
+  margin: calc(var(--card) * -0.6) 0 0 calc(var(--card) / -2);
+  transform-style: preserve-3d;
+  transform: translateY(calc((0.5 - var(--t)) * var(--h) * 0.74 + 30px))
+    rotateY(calc(var(--t) * var(--turns) * -1))
+    translateZ(calc(var(--r-min) + (var(--r-max) - var(--r-min)) * var(--t)))
+    rotateZ(var(--tilt)) scale(var(--s));
+  /* A negative delay starts each print part-way through its ride, so they're spread out. */
+  animation: polaroid-ride var(--ride) linear infinite;
+  animation-delay: calc(var(--t0) * var(--ride) * -1);
+}
+
+@keyframes polaroid-ride {
+  0% {
+    --t: 0;
+    --s: 0;
+  }
+  7% {
+    --s: 1;
+  }
+  90% {
+    --s: 1;
+  }
+  100% {
+    --t: 1;
+    --s: 0;
+  }
+}
+
+.polaroid-inner {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.polaroid-front,
+.polaroid-back {
+  backface-visibility: hidden;
+  background: #fffdf8;
+  padding: 8px 8px 0;
+  box-shadow: 0 3px 8px rgb(29 27 24 / 0.16);
+}
+
+.polaroid-front img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.polaroid-front figcaption {
+  white-space: nowrap; /* keeps every print the same height */
+  overflow: hidden;
+  font-family: var(--font-caveat), cursive;
+  font-size: 1.15rem;
+  line-height: 2.1rem;
+  text-align: center;
+  color: var(--color-ink);
+}
+
+/* The back of each print, so the far side of the funnel isn't a mirror image. */
+.polaroid-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  display: grid;
+  place-items: center;
+  background: #efe9de;
+  font-family: var(--font-caveat), cursive;
+  font-size: 1rem;
+  color: var(--color-muted);
+}
+
+.tornado-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 220px;
+  height: 26px;
+  margin-left: -110px;
+  border-radius: 50%;
+  background: radial-gradient(rgb(29 27 24 / 0.22), transparent 70%);
+  animation: tornado-shadow 7s ease-in-out infinite alternate;
+}
+
+@keyframes tornado-sway {
+  from {
+    transform: translateX(-18px) rotateZ(-4deg) rotateX(-6deg);
+  }
+  to {
+    transform: translateX(18px) rotateZ(4deg) rotateX(-6deg);
+  }
+}
+
+@keyframes tornado-shadow {
+  from {
+    transform: translateX(-18px) scaleX(0.9);
+  }
+  to {
+    transform: translateX(18px) scaleX(1.1);
+  }
+}
+
+@media (max-width: 640px) {
+  .tornado-stage {
+    --r-min: 78px;
+    --r-max: 130px;
+    --card: 84px;
+    --h: 470px;
+  }
+  .polaroid-front figcaption {
+    font-size: 0.9rem;
+    line-height: 1.6rem;
+  }
+}
+
+/* If someone has asked their device for less motion, the prints hold still
+   at their starting spots along the spiral. */
+@media (prefers-reduced-motion: reduce) {
+  .tornado-sway,
+  .tornado-shadow {
+    animation: none;
+  }
+  .polaroid {
+    animation: none;
+    --t: var(--t0);
+    --s: 1;
+  }
+}
+
 dialog::backdrop {
   background: rgb(20 18 15 / 0.92);
 }

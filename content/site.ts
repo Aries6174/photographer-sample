@@ -2,12 +2,12 @@
 // mostly means editing this one file and swapping the images in public/images.
 
 export const site = {
-  name: "Ilan Reyes",
+  name: "Joellyn Jaspa",
   role: "Travel & Landscape Photographer",
   description:
-    "Ilan Reyes photographs quiet landscapes, coastlines and cities for travel brands, hotels and print collectors.",
+    "Joellyn Jaspa photographs quiet landscapes, coastlines and cities for travel brands, hotels and print collectors.",
   location: "Based in the Philippines, working worldwide",
-  email: "hello@ilanreyes.example", // .example is a reserved domain, safe for demos
+  email: "hello@joellynjaspa.example", // .example is a reserved domain, safe for demos
   socials: [
     { label: "Instagram", href: "#" },
     { label: "Behance", href: "#" },
@@ -72,13 +72,13 @@ const P = { width: 900, height: 1200 }; // portrait
 export const photos: Photo[] = [
   { src: "/images/mountains-1.webp", ...L, title: "Snowline", category: "Mountains", alt: "Snowy peaks under a clear sky", credit: { author: "Go Wild", url: "https://unsplash.com/photos/V0yAek6BgGk" } },
   { src: "/images/coast-1.webp", ...L, title: "Cliffs at noon", category: "Coast", alt: "Green cliffs dropping into a deep blue sea", credit: { author: "Paweł Wojciechowski", url: "https://unsplash.com/photos/QYAojSRu82c" } },
-  { src: "/images/forest-1.webp", ...P, title: "Hidden falls", category: "Forest", alt: "A thin waterfall in a mossy forest", credit: { author: "Josefa Holland-Merten", url: "https://unsplash.com/photos/xBYD4tt8ANo" } },
+  { src: "/images/forest-1.webp", ...L, title: "Hidden falls", category: "Forest", alt: "A thin waterfall in a mossy forest", credit: { author: "Josefa Holland-Merten", url: "https://unsplash.com/photos/xBYD4tt8ANo" } },
   { src: "/images/cities-1.webp", ...L, title: "Canal morning", category: "Cities", alt: "Colorful houses along a calm canal", credit: { author: "Linh Nguyen", url: "https://unsplash.com/photos/agkblvPff5U" } },
   { src: "/images/mountains-3.webp", ...P, title: "Above the clouds", category: "Mountains", alt: "A mountain ridge rising out of low clouds", credit: { author: "Tanvi Malik", url: "https://unsplash.com/photos/OeC1wIsKNpk" } },
   { src: "/images/coast-2.webp", ...L, title: "Long bay", category: "Coast", alt: "A curved bay with gentle waves", credit: { author: "Ma. Alejandra", url: "https://unsplash.com/photos/TDahcrcPhhA" } },
   { src: "/images/forest-2.webp", ...L, title: "Green river", category: "Forest", alt: "A river running through a dense green forest", credit: { author: "Caleb George", url: "https://unsplash.com/photos/zZzKLzKP24o" } },
   { src: "/images/cities-4.webp", ...P, title: "Empty street", category: "Cities", alt: "A quiet city street between brick buildings", credit: { author: "Nicholas Swanson", url: "https://unsplash.com/photos/SyBYM8R6VU4" } },
-  { src: "/images/mountains-2.webp", ...L, title: "Blue ridge", category: "Mountains", alt: "Snow-capped mountains above a turquoise lake", credit: { author: "Ryan Schroeder", url: "https://unsplash.com/photos/Gg7uKdHFb_c" } },
+  { src: "/images/mountains-2.webp", ...L, title: "Blue ridge", category: "Mountains", alt: "Snow-capped peaks under a deep teal sky", credit: { author: "Ryan Schroeder", url: "https://unsplash.com/photos/Gg7uKdHFb_c" } },
   { src: "/images/coast-3.webp", ...P, title: "Horizon line", category: "Coast", alt: "A calm sea meeting a pale horizon", credit: { author: "davide ragusa", url: "https://unsplash.com/photos/QbDkhVZ80To" } },
   { src: "/images/cities-2.webp", ...L, title: "Corner café", category: "Cities", alt: "A red-brick café on a street corner", credit: { author: "Bonnie Meisels", url: "https://unsplash.com/photos/Y5uyOoct2pg" } },
   { src: "/images/forest-4.webp", ...P, title: "Fog in the pines", category: "Forest", alt: "Tall pine trees in a thick fog", credit: { author: "Orlova Maria", url: "https://unsplash.com/photos/7FLh300YONc" } },

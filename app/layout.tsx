@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Caveat, Cormorant_Garamond, Manrope } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -14,6 +14,12 @@ const cormorant = Cormorant_Garamond({
 
 const manrope = Manrope({
   variable: "--font-manrope",
+  subsets: ["latin"],
+});
+
+// Handwriting font, used only for the polaroid captions.
+const caveat = Caveat({
+  variable: "--font-caveat",
   subsets: ["latin"],
 });
 
@@ -34,7 +40,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${manrope.variable} antialiased`}>
+    <html lang="en" className={`${cormorant.variable} ${manrope.variable} ${caveat.variable} antialiased`}>
       <body>{children}</body>
     </html>
   );

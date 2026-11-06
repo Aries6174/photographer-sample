@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Joellyn Jaspa: photographer portfolio sample
 
-## Getting Started
+A one-page sample portfolio for a travel and landscape photographer. It's a Fiverr sample by [Adrian.js](https://adrian-js.vercel.app).
 
-First, run the development server:
+**Stack:** Next.js 16 (static export), React 19, Tailwind CSS 4, TypeScript. There's no backend, and `npm run build` outputs plain files to `out/`.
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # static site in out/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Adapt it for a client
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Edit `content/site.ts`, where all the text, services, stats and photo list live.
+2. Replace the images in `public/images/`. Export WebP at about 1200px on the long edge, or 2400px for the hero.
+3. Change the colors and fonts in `app/globals.css` (`@theme`) and `app/layout.tsx`.
+4. Connect the contact form to Formspree or Web3Forms. In this demo, it only shows a thank-you message.
+5. Set `metadataBase` in `app/layout.tsx` to the real domain, so social previews work.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Sections
 
-## Learn More
+These are the hero, stats strip, filterable masonry gallery with a lightbox (native `<dialog>`, arrow keys and Esc), about, services, contact form and footer with photo credits.
 
-To learn more about Next.js, take a look at the following resources:
+## Photo credits
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All photos are from [Unsplash](https://unsplash.com/license) (free to use). Each photographer is credited in the site footer and in `content/site.ts`. Images were fetched through [Lorem Picsum](https://picsum.photos).
