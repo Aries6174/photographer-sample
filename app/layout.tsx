@@ -24,6 +24,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://photographer-sample.vercel.app"),
   title: `${site.name} | ${site.role}`,
   description: site.description,
   openGraph: {
