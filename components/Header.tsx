@@ -32,14 +32,15 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
         {/* The logo is a plane, for a travel photographer. The name stays in the link
             for screen readers, since the icon alone says nothing to them. */}
-        <a href="#top" className="text-ink transition-colors hover:text-accent" onClick={() => setOpen(false)}>
-          <PlaneIcon className="size-8" />
+        {/* It flies in on load and takes off again on hover. */}
+        <a href="#top" className="plane-logo text-ink transition-colors hover:text-accent" onClick={() => setOpen(false)}>
+          <PlaneIcon className="plane-in size-8" />
           <span className="sr-only">{site.name}, back to top</span>
         </a>
 
         <nav aria-label="Main" className="hidden gap-9 text-sm md:flex">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-muted transition-colors hover:text-ink">
+            <a key={l.href} href={l.href} className="link-line pb-1 text-muted hover:text-ink">
               {l.label}
             </a>
           ))}
@@ -74,6 +75,8 @@ export default function Header() {
           ))}
         </nav>
       )}
+      {/* Fills left to right as the page scrolls (see .scroll-progress in globals.css). */}
+      <div aria-hidden="true" className="scroll-progress" />
     </header>
   );
 }

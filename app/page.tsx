@@ -18,36 +18,50 @@ export default function Home() {
       <main id="top">
         {/* Hero: text on the left, a tall photo on the right. It stacks on phones. */}
         <section className="mx-auto grid max-w-7xl gap-8 px-5 pt-6 pb-16 sm:px-8 lg:grid-cols-12 lg:items-end lg:gap-12 lg:pt-16 lg:pb-28">
+          {/* --d is each piece's place in the load sequence (see "Page-load motion" in globals.css). */}
           <div className="lg:col-span-5 lg:pb-6">
-            <Eyebrow>{hero.eyebrow}</Eyebrow>
+            <div className="rise" style={{ "--d": 0 } as React.CSSProperties}>
+              <Eyebrow>{hero.eyebrow}</Eyebrow>
+            </div>
             <h1 className="font-serif text-[3.25rem] leading-[0.95] font-normal sm:text-7xl">
-              {hero.title}
-              <br />
-              <em className="text-accent">{hero.titleItalic}</em>
+              <span className="line" style={{ "--d": 1 } as React.CSSProperties}>
+                <span>{hero.title}</span>
+              </span>
+              <span className="line" style={{ "--d": 2 } as React.CSSProperties}>
+                <span>
+                  <em className="text-accent">{hero.titleItalic}</em>
+                </span>
+              </span>
             </h1>
-            <p className="mt-6 max-w-md leading-relaxed sm:mt-8 sm:text-lg text-muted">{hero.intro}</p>
-            <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10">
-              <a href="#work" className="bg-ink px-6 py-3.5 text-sm tracking-[0.18em] text-paper uppercase transition-colors hover:bg-accent">
+            <p className="rise mt-6 max-w-md leading-relaxed sm:mt-8 sm:text-lg text-muted" style={{ "--d": 4 } as React.CSSProperties}>
+              {hero.intro}
+            </p>
+            <div className="rise mt-8 flex flex-wrap items-center gap-6 sm:mt-10" style={{ "--d": 5 } as React.CSSProperties}>
+              <a href="#work" className="btn-sweep bg-ink px-6 py-3.5 text-sm tracking-[0.18em] text-paper uppercase">
                 View the work
               </a>
-              <a href="#contact" className="border-b border-ink pb-1 text-sm tracking-wide">
-                Book a commission
+              <a href="#contact" className="link-redraw pb-1 text-sm tracking-wide">
+                Book a commission <span aria-hidden="true" className="arrow-nudge">&rarr;</span>
               </a>
             </div>
           </div>
           {/* A portrait photo, so the frame stays tall at every size. Its width is capped,
               or a 4:5 frame across 7 desktop columns would be taller than the screen. */}
           <div className="w-full sm:mx-auto sm:max-w-md lg:col-span-7 lg:mr-0 lg:max-w-[30rem]">
-            <Image
-              src={hero.image.src}
-              width={hero.image.width}
-              height={hero.image.height}
-              alt={hero.image.alt}
-              preload
-              sizes="(min-width: 640px) 30rem, 100vw"
-              className="aspect-[4/5] h-auto w-full object-cover"
-            />
-            <p className="mt-3 text-xs text-muted">{site.location}</p>
+            <div className="photo-wipe overflow-hidden">
+              <Image
+                src={hero.image.src}
+                width={hero.image.width}
+                height={hero.image.height}
+                alt={hero.image.alt}
+                preload
+                sizes="(min-width: 640px) 30rem, 100vw"
+                className="aspect-[4/5] h-auto w-full object-cover"
+              />
+            </div>
+            <p className="rise mt-3 text-xs text-muted" style={{ "--d": 7 } as React.CSSProperties}>
+              {site.location}
+            </p>
           </div>
         </section>
 
