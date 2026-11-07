@@ -38,16 +38,16 @@ export default function ContactForm() {
       </div>
       <label className="grid gap-1 text-xs uppercase tracking-[0.18em] text-muted">
         Project type
-        <select name="type" className={`${field} text-base normal-case tracking-normal text-ink`} defaultValue="Commission">
-          <option>Commission</option>
-          <option>Print purchase</option>
-          <option>Workshop</option>
+        <select name="type" className={`${field} text-base normal-case tracking-normal text-ink`} defaultValue="Portrait session">
+          <option>Portrait session</option>
+          <option>Pet portrait</option>
+          <option>Everyday story</option>
           <option>Something else</option>
         </select>
       </label>
       <label className="grid gap-1 text-xs uppercase tracking-[0.18em] text-muted">
         Message
-        <textarea required name="message" rows={4} className={`${field} resize-none text-base normal-case tracking-normal text-ink`} placeholder="Where, when, and what you have in mind" />
+        <textarea required name="message" rows={4} className={`${field} resize-none text-base normal-case tracking-normal text-ink`} placeholder="Who, where, and what you have in mind" />
       </label>
       <button
         type="submit"

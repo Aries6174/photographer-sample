@@ -7,13 +7,13 @@ import { photos } from "@/content/site";
 // at the bottom. The motion is CSS (see "Polaroid tornado" in globals.css).
 // JavaScript only pauses it off screen and slows it on hover.
 const notes = [
-  "first light!",
-  "worth it",
+  "coco!!",
+  "dessert first",
   "brr.",
-  "lost, happily",
+  "sleepy",
   "again?",
   "no filter",
-  "golden",
+  "cheese",
   "shh",
 ];
 

@@ -99,13 +99,16 @@ export default function Gallery() {
               </button>
               <p className="text-center">
                 <span className="block font-serif text-2xl">{current.title}</span>
-                <span className="opacity-60">
-                  Photo:{" "}
-                  <a href={current.credit.url} target="_blank" rel="noopener noreferrer" className="underline">
-                    {current.credit.author}
-                  </a>{" "}
-                  / Unsplash
-                </span>
+                {/* Only stock photos carry a credit. Joellyn's own photos just show their title. */}
+                {current.credit && (
+                  <span className="opacity-60">
+                    Photo:{" "}
+                    <a href={current.credit.url} target="_blank" rel="noopener noreferrer" className="underline">
+                      {current.credit.author}
+                    </a>{" "}
+                    / Unsplash
+                  </span>
+                )}
               </p>
               <button type="button" onClick={() => step(1)} className="px-2 py-1 opacity-70 hover:opacity-100">
                 Next →

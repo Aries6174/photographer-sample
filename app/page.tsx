@@ -81,14 +81,14 @@ export default function Home() {
         <section aria-labelledby="postcards-title" className="overflow-hidden">
           <div className="mx-auto grid max-w-7xl items-center gap-4 px-5 pt-20 pb-12 sm:px-8 lg:grid-cols-12 lg:pt-24">
             <div className="lg:col-span-4">
-              <Eyebrow>Postcards</Eyebrow>
+              <Eyebrow>Snapshots</Eyebrow>
               <h2 id="postcards-title" className="font-serif text-5xl leading-tight sm:text-6xl">
                 Swept up
                 <br />
-                <em className="text-accent">in the road.</em>
+                <em className="text-accent">in the everyday.</em>
               </h2>
               <p className="mt-6 max-w-sm leading-relaxed text-muted">
-                Every trip ends with a pile of prints on the studio floor. Here they are, mid-whirl. Hover or tap to slow the wind down.
+                Every week ends with a camera roll full of little things. Here they are, mid-whirl. Hover or tap to slow the wind down.
               </p>
             </div>
             <div className="lg:col-span-8">
@@ -100,10 +100,12 @@ export default function Home() {
         <section id="work" className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
             <div>
-              <Eyebrow>Selected work</Eyebrow>
-              <h2 className="font-serif text-5xl sm:text-6xl">Field notes in light</h2>
+              <Eyebrow>The camera roll</Eyebrow>
+              <h2 className="font-serif text-5xl sm:text-6xl">Everyday, up close</h2>
             </div>
-            <p className="max-w-sm text-muted">{photos.length} frames from recent trips. Tap any photo to see it larger.</p>
+            <p className="max-w-sm text-muted">
+              {photos.length} frames of home, Coco and the places in between. Tap any photo to see it larger.
+            </p>
           </div>
           <Gallery />
         </section>
@@ -155,12 +157,12 @@ export default function Home() {
             <div className="lg:col-span-5">
               <Eyebrow>Contact</Eyebrow>
               <h2 className="font-serif text-5xl leading-tight sm:text-6xl">
-                Planning a trip,
+                Want a few moments
                 <br />
-                <em>or a wall?</em>
+                <em>of your own?</em>
               </h2>
               <p className="mt-6 max-w-sm leading-relaxed text-muted">
-                Tell me about your project. I reply to every message within two working days.
+                Tell me who (or which pet) you&apos;d like photographed. I reply to every message within two days.
               </p>
               <a href={`mailto:${site.email}`} className="mt-8 inline-block border-b border-ink pb-1 font-serif text-2xl">
                 {site.email}
@@ -188,9 +190,13 @@ export default function Home() {
             </ul>
           </div>
           <details className="border-t border-paper/15 pt-6">
-            <summary className="cursor-pointer hover:text-paper">Photo credits (all from Unsplash)</summary>
-            <ul className="mt-4 grid gap-1 text-xs sm:grid-cols-2 lg:grid-cols-3">
-              {[...extraCredits.map((c) => ({ label: c.use, ...c })), ...photos.map((p) => ({ label: p.title, ...p.credit }))].map((c) => (
+            <summary className="cursor-pointer hover:text-paper">Photo credits</summary>
+            <p className="mt-4 text-xs">The personal photos are Joellyn&apos;s own. The Places photos are from Unsplash:</p>
+            <ul className="mt-3 grid gap-1 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                ...extraCredits.map((c) => ({ label: c.use, ...c })),
+                ...photos.flatMap((p) => (p.credit ? [{ label: p.title, ...p.credit }] : [])),
+              ].map((c) => (
                 <li key={c.label}>
                   {c.label}:{" "}
                   <a href={c.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-paper">
