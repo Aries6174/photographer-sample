@@ -96,12 +96,6 @@ body {
   .photo-wipe img {
     animation: settle 2.2s var(--ease-out) 0.25s both;
   }
-  .plane-in {
-    animation: plane-in 1.4s var(--ease-out) 0.1s both;
-  }
-  .plane-logo:hover .plane-in {
-    animation: takeoff 0.9s var(--ease-out);
-  }
 }
 
 @keyframes line-up {
@@ -119,16 +113,6 @@ body {
 @keyframes settle {
   from { transform: scale(1.18); }
   to { transform: scale(1); }
-}
-@keyframes plane-in {
-  from { opacity: 0; transform: translate(-2.5rem, 1rem) rotate(12deg); }
-  to { opacity: 1; transform: none; }
-}
-@keyframes takeoff {
-  0% { transform: none; }
-  45% { transform: translate(0.6rem, -0.5rem) rotate(-10deg); opacity: 0; }
-  46% { transform: translate(-0.6rem, 0.5rem) rotate(-10deg); opacity: 0; }
-  100% { transform: none; opacity: 1; }
 }
 
 /* A button whose accent color sweeps in from the left on hover. */

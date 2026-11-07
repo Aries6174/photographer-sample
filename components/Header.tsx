@@ -1,6 +1,5 @@
 "use client";
 
-import PlaneIcon from "./PlaneIcon";
 import { useEffect, useState } from "react";
 import { site } from "@/content/site";
 
@@ -30,12 +29,12 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
-        {/* The logo is a plane, for a travel photographer. The name stays in the link
-            for screen readers, since the icon alone says nothing to them. */}
-        {/* It flies in on load and takes off again on hover. */}
-        <a href="#top" className="plane-logo text-ink transition-colors hover:text-accent" onClick={() => setOpen(false)}>
-          <PlaneIcon className="plane-in size-8" />
-          <span className="sr-only">{site.name}, back to top</span>
+        <a
+          href="#top"
+          className="rise font-serif text-2xl tracking-wide transition-colors hover:text-accent"
+          onClick={() => setOpen(false)}
+        >
+          {site.name}
         </a>
 
         <nav aria-label="Main" className="hidden gap-9 text-sm md:flex">
