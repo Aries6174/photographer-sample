@@ -18,7 +18,7 @@ export const site = {
     titleItalic: "far from the map.",
     intro:
       "I chase first light across mountains, coastlines and sleeping cities, and make photographs that feel like standing there.",
-    image: { src: "/images/hero.webp", width: 2400, height: 1500, alt: "A blue fjord between steep green mountains" },
+    image: { src: "/images/portrait.webp", width: 1125, height: 1500, alt: "Joellyn smiling, holding a slice of birthday cake with a candle" },
   },
   stats: [
     { value: "32", label: "Countries" },
@@ -89,6 +89,5 @@ export const photos: Photo[] = [
 ];
 
 export const extraCredits = [
-  { use: "Hero", author: "Jeff Sheldon", url: "https://unsplash.com/photos/oOFrXiz8-0A" },
   { use: "About", author: "Danka & Peter", url: "https://unsplash.com/photos/tvicgTdh7Fg" },
 ];

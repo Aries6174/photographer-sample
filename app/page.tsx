@@ -35,15 +35,17 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="lg:col-span-7">
+          {/* A portrait photo, so the frame stays tall at every size. Its width is capped,
+              or a 4:5 frame across 7 desktop columns would be taller than the screen. */}
+          <div className="w-full sm:mx-auto sm:max-w-md lg:col-span-7 lg:mr-0 lg:max-w-[30rem]">
             <Image
               src={hero.image.src}
               width={hero.image.width}
               height={hero.image.height}
               alt={hero.image.alt}
               preload
-              sizes="(min-width: 1024px) 58vw, 100vw"
-              className="aspect-[4/5] h-auto w-full object-cover sm:aspect-[16/11]"
+              sizes="(min-width: 640px) 30rem, 100vw"
+              className="aspect-[4/5] h-auto w-full object-cover"
             />
             <p className="mt-3 text-xs text-muted">{site.location}</p>
           </div>
